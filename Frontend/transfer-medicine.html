@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Transfer Medicine</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+<div class="login-box">
+
+<h2>Transfer to Pharmacy</h2>
+
+<div class="input-group">
+<input type="text" id="medicineId" placeholder="Enter Medicine ID">
+</div>
+
+<div class="input-group">
+<select id="pharmacySelect">
+<option value="">Select Pharmacy</option>
+</select>
+</div>
+
+<button class="login-btn" onclick="transferMedicine()">
+Transfer Medicine
+</button>
+
+<br><br>
+
+<button class="login-btn" onclick="window.location.href='distributor.html'">
+Back to Dashboard
+</button>
+
+</div>
+
+</div>
+
+<script src="js/distributor.js"></script>
+
+</body>
+</html>

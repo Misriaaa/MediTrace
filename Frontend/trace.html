@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Medicine Trace</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="trace-page">
+    
+    <div class="container">
+
+
+<h1>💊 Medicine Trace System</h1>
+
+    
+<input type="number" id="medicineId" placeholder="Enter Medicine ID">
+    
+    
+<button class="login-btn" onclick="trackMedicine()">Trace Medicine</button>
+
+
+<br><br>
+<button class="login1-btn" onclick="goDashboard()">
+    Back to Dashboard
+</button>
+
+
+<div id="result"></div>
+</div>
+
+<script>
+
+/* AUTO LOAD FROM QR CODE */
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+if(id){
+    document.getElementById("medicineId").value = id;
+    trackMedicine();
+}
+
+function goDashboard() {
+
+    const role = localStorage.getItem("role");
+
+    if(role === "admin"){
+        window.location.href = "admin.html";
+    }
+    else if(role === "manufacturer"){
+        window.location.href = "manufacturer.html";
+    }
+    else if(role === "distributor"){
+        window.location.href = "distributor.html";
+    }
+    else if(role === "pharmacy"){
+        window.location.href = "pharmacy.html";
+    }
+    else{
+        alert("Access Denied");
+        window.location.href = "login.html";
+    }
+
+}
+
+/* TRACK MEDICINE */
+
+async function trackMedicine(){
+
+    const id = document.getElementById("medicineId").value;
+
+    if(!id){
+        alert("Enter Medicine ID");
+        return;
+    }
+
+    const result = document.getElementById("result");
+
+    // show loading first
+    result.innerHTML = "<p>Loading medicine data...</p>";
+
+    try{
+
+        const res = await fetch(`http://localhost:3000/api/track-medicine?id=${id}`);
+        const data = await res.json();
+
+        /* FAKE MEDICINE */
+
+        if(data.message){
+            result.innerHTML = `
+            <div class="card" style="border:2px solid red">
+                <h2 style="color:red">⚠ WARNING</h2>
+                <p>Medicine not found in Blockchain.</p>
+                <p>This product may be <b>FAKE</b>.</p>
+            </div>
+            `;
+            return;
+        }
+
+        /* HISTORY */
+
+        let historyHTML = "";
+
+        if(data.history && data.history.length > 0){
+
+            data.history.forEach(h=>{
+                historyHTML += `
+                <div class="supplycard">
+                    <p><b>Role:</b> ${h.role}</p>
+                    <p><b>Action:</b> ${h.action}</p>
+                    <p><b>Address:</b> ${h.address}</p>
+                    <p><b>Date:</b> ${new Date(h.date).toLocaleString()}</p>
+                </div>
+                `;
+            });
+
+        } else {
+            historyHTML = "<p>No history available</p>";
+        }
+
+        /* MEDICINE INFO */
+
+        result.innerHTML = `
+        <div class="tracecard">
+
+            <h2>${data.name}</h2>
+
+            <p><b>Medicine ID:</b> ${data.medicineId}</p>
+
+            <p><b>Batch Number:</b> ${data.batchNumber ? data.batchNumber : "Not Available"}</p>
+
+            <p><b>Manufacturer:</b> ${data.manufacturer ? data.manufacturer : "Not Available"}</p>
+
+            <p><b>Current Owner:</b> ${data.currentOwner ? data.currentOwner : "Not Available"}</p>
+
+            <p><b>Manufacture Date:</b> ${data.manufactureDate}</p>
+
+            <p><b>Expiry Date:</b> ${data.expiryDate}</p>
+
+        </div>
+
+        <h2>Supply Chain History</h2>
+
+        ${historyHTML}
+        `;
+
+    }catch(error){
+
+        result.innerHTML = `
+        <div class="card" style="border:2px solid red">
+            <p>Server error while fetching medicine.</p>
+        </div>
+        `;
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+

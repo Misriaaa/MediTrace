@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Medicine</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+        <h2>Add Medicine</h2>
+
+        <div class="input-group">
+<input type="text" id="name" placeholder="Medicine Name" required>
+</div>
+
+<div class="input-group">
+<input type="text" id="brand" placeholder="Brand Name" required>
+</div>
+
+<div class="input-group">
+<input type="text" id="batchNumber" placeholder="Batch Number" required>
+</div>
+
+<div class="input-group">
+<input type="text" id="manufacturerName" placeholder="Manufacturer Name" required>
+</div>
+
+<div class="input-group">
+<input type="number" id="quantity" placeholder="Quantity" required>
+</div>
+
+<div class="input-group">
+<input type="date" id="manufactureDate"
+onfocus="this.type='date'"
+onblur="if(!this.value)this.type='text'"
+placeholder="Manufacturing Date">
+</div>
+
+<div class="input-group">
+<input type="date" id="expiryDate"
+onfocus="this.type='date'"
+onblur="if(!this.value)this.type='text'"
+placeholder="Expiring Date">
+</div>
+
+
+
+        <button class="login2-btn" onclick="createMedicine()">
+            Add Medicine
+        </button>
+
+        <br><br>
+
+        <button class="login2-btn" onclick="window.location.href='manufacturer.html'">
+            Back to Dashboard
+        </button>
+
+        <div id="qr" style="margin-top:20px;"></div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/manufacturer.js"></script>
+
+</body>
+</html>

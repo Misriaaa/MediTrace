@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+  <div class="login-box">
+
+    <h2>Supply Chain Register</h2>
+
+    <div class="input-group">
+      <input type="text" id="name" placeholder="Full Name" required>
+    </div>
+
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="input-group">
+      <input type="password" id="password" placeholder="Password" required>
+    </div>
+
+    <div class="input-group">
+      <select id="role" class="role-select">
+        <option value="">Select Role</option>
+        <option value="manufacturer">Manufacturer</option>
+        <option value="distributor">Distributor</option>
+        <option value="pharmacy">Pharmacy</option>
+      </select>
+    </div>
+
+  
+    <button class="login1-btn" onclick="register()">Register</button>
+
+    <br><br>
+
+    <button class="login1-btn" onclick="goLogin()">
+      Already have account? Login
+    </button>
+ <br><br>
+
+        <button class="login1-btn" onclick="window.location.href='index.html'">
+            Back to Dashboard
+        </button>
+  </div>
+
+</div>
+
+<script>
+
+async function register(){
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+const role = document.getElementById("role").value;
+
+if(!name || !email || !password || !role){
+alert("Please fill all fields");
+return;
+}
+
+try{
+
+const res = await fetch("http://localhost:3000/api/register",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+name,
+email,
+password,
+role
+})
+
+});
+
+const data = await res.json();
+
+alert(data.message);
+
+if(res.status === 201){
+window.location.href="login.html";
+}
+
+}catch(err){
+
+console.error(err);
+alert("Registration failed");
+
+}
+
+}
+
+function goLogin(){
+window.location.href="login.html";
+}
+
+</script>
+
+</body>
+</html>

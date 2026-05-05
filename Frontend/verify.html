@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Verify Medicine</title>
+<header class="header">
+    <div class="logo-box">
+        <img src="./images/logo1.png" alt="MediTrace Logo" class="logo">
+    </div>
+</header>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: #fcfdfe;
+            background-size: cover;
+
+            font-family: Arial, sans-serif;
+            color: #0c0331;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 25px;
+            border-radius: 15px;
+
+            /* Glass effect */
+            background: rgba(7, 7, 7, 0.15);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background: #060c5b;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        /* HEADER */
+.header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60px;;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 👈 LEFT SIDE */
+
+    padding: 15px 40px;
+
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+
+    z-index: 10;
+}
+
+/* LOGO BOX */
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    height: 120px;
+}
+.simple-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+height: 40px;;
+    text-align: center;
+    padding: 10px;
+
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+
+    font-size: 14px;
+    color: #fff;
+}
+    </style>
+</head>
+<footer class="simple-footer">
+    © 2026 MediTrace | Ensuring safe and authentic medicines through blockchain
+</footer>
+
+<body>
+
+    <div class="container">
+        <h1>🔍 Verify Your Medicine</h1>
+
+        <input type="number" id="medicineId" placeholder="Enter Medicine ID">
+        <br>
+        <button onclick="trackMedicine()">Verify</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        if (id) {
+            document.getElementById("medicineId").value = id;
+            trackMedicine();
+        }
+
+        async function trackMedicine() {
+
+            const id = document.getElementById("medicineId").value;
+
+            if (!id) {
+                alert("Enter Medicine ID");
+                return;
+            }
+
+            const result = document.getElementById("result");
+            result.innerHTML = "<p>Checking medicine...</p>";
+
+            try {
+
+                const res = await fetch(`/api/track-medicine?id=${id}`);
+                const data = await res.json();
+
+                if (!data.success) {
+                    result.innerHTML = `
+                    <div class="card" style="border:2px solid red">
+                        <h2 style="color:red">❌ Fake Medicine</h2>
+                        <p>This medicine is NOT found in the system.</p>
+                        <p>Please do NOT use this product.</p>
+                    </div>`;
+                    return;
+                }
+
+                const today = new Date();
+                const expiry = new Date(data.expiryDate);
+
+                let expiryStatus = expiry < today
+                    ? "<p style='color:red'><b>Status:</b> Expired ❌</p>"
+                    : "<p style='color:lightgreen'><b>Status:</b> Safe to Use ✅</p>";
+
+                let historyHTML = "";
+
+                if (data.history && data.history.length > 0) {
+                    data.history.forEach(h => {
+                        historyHTML += `
+                        <div class="card">
+                            <p><b>Role:</b> ${h.role}</p>
+                            <p><b>Action:</b> ${h.action}</p>
+                            <p><b>Address:</b> ${h.address}</p>
+                            <p><b>Date:</b> ${new Date(h.date).toLocaleString()}</p>
+                        </div>`;
+                    });
+                } else {
+                    historyHTML = "<p>No history available</p>";
+                }
+
+                result.innerHTML = `
+                <div class="card">
+                    <h2 style="color:lightgreen">✅ Authentic Medicine</h2>
+                    <h3>${data.name}</h3>
+                    <p><b>Medicine ID:</b> ${data.medicineId}</p>
+                    <p><b>Batch Number:</b> ${data.batchNumber || "N/A"}</p>
+                    <p><b>Manufacturer:</b> ${data.manufacturer || "N/A"}</p>
+                    <p><b>Current Owner:</b> ${data.currentOwner || "N/A"}</p>
+                    <p><b>Manufacture Date:</b> ${data.manufactureDate}</p>
+                    <p><b>Expiry Date:</b> ${data.expiryDate}</p>
+                    ${expiryStatus}
+                </div>
+
+                <h2>📦 Supply Chain History</h2>
+                ${historyHTML}`;
+            } catch (error) {
+                result.innerHTML = `
+                <div class="card" style="border:2px solid red">
+                    <p>Server error. Please try again.</p>
+                </div>`;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

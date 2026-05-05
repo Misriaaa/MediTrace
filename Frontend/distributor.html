@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Distributor Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>SupplyChain</h2>
+        <ul>
+          <li onclick="window.location.href='receive-product.html'">View Received</li>
+          <li onclick="window.location.href='transfer-medicine.html'">Transfer to Pharmacy</li>
+          <li onclick="window.location.href='transferred-products.html'"> Transferred Medicines</li>
+          <li onclick="window.location.href='trace.html'">Trace Medicines</li>
+        </ul> 
+        <ul>
+            <li onclick="logout()">Logout</li>
+        </ul>   
+    </div>
+
+    <!-- Dashboard Content -->
+    <div class="main-content">
+
+        <div class="topbar">
+            <h1>Distributor Dashboard</h1>
+            <span>Welcome...</span>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Received</h3>
+                <p id="totalReceived">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Transferred</h3>
+                <p id="totalTransferred">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Pending</h3>
+                <p id="totalPending">0</p>
+
+    </div>
+</div>
+<script>
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
+<script src="js/distributor.js"></script>
+</body>
+</html>

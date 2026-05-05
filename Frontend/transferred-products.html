@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transferred Products</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>SupplyChain</h2>
+        <ul>
+            <li onclick="window.location.href='distributor.html'">Dashboard</li>
+            <li onclick="window.location.href='receive-product.html'">View Received</li>
+            <li onclick="window.location.href='transfer-medicine.html'">Transfer to Pharmacy</li>
+            <li onclick="window.location.href='trace.html'">Trace Medicines</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="topbar">
+            <h1>Transferred Medicines</h1>
+        </div>
+
+        <div id="transferredContainer" class="card-container"></div>
+
+    </div>
+
+</div>
+
+<script>
+function logout(){
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
+
+<script src="js/distributor.js"></script>
+
+</body>
+</html>

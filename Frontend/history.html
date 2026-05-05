@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medicine History</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>SupplyChain</h2>
+        <ul>
+            <li onclick="window.location.href='manufacturer.html'">Dashboard</li>
+            <li onclick="window.location.href='history.html'">Medicine History</li>
+            <li onclick="logout()">Logout</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <div class="topbar">
+            <h1>Medicine History Tracker</h1>
+        </div>
+
+        <div class="card">
+
+            <h3>Track Medicine</h3>
+
+            <input 
+                type="text" 
+                id="medicineId" 
+                placeholder="Enter Medicine ID"
+            >
+
+            <button onclick="getHistory()" class="login-btn">
+                Track
+            </button>
+
+            <div id="historyResult" style="margin-top:20px;"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+</script>
+
+<script src="js/history.js"></script>
+
+</body>
+</html>

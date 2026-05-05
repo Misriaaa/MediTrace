@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ship Product</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+        <h2>Ship Product</h2>
+
+        <div class="input-group">
+            <input type="number" id="medicineId" placeholder="Medicine ID">
+        </div>
+
+        <select id="distributorSelect" class="role-select">
+           <option value="">Select Distributor</option>
+        </select>
+<br><br>
+        <button class="login-btn" onclick="shipProduct()">
+            Ship Product
+        </button>
+
+        <br><br>
+
+        <button class="login1-btn" onclick="window.location.href='manufacturer.html'">
+            Back to Dashboard
+        </button>
+
+        <div id="shipResult" style="margin-top:20px;"></div>
+    </div>
+
+</div>
+
+<script src="js/manufacturer.js"></script>
+
+</body>
+</html>

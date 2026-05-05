@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediTrace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Elegant Boutique Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body class="home-page">
+
+<nav class="navbar">
+    <div class="nav-brand">
+        <img src="images/logo1.png" alt="MediTrace Logo" class="nav-logo">
+    </div>
+
+    <nav>
+    <a href="#about">About</a>
+    <a href="#features">Features</a>
+
+
+        <button onclick="goToRegister()" class="login-btn">
+            Register
+        </button>
+
+        <button onclick="goToLogin()" class="login-btn">
+            Login
+        </button>
+        </nav>
+
+</nav>
+
+<section class="hero">
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1>MediTrace</h1>
+        <p>Securing Pharmaceutical Supply Chains with Blockchain Transparency</p>
+        <button onclick="goToRegister()" class="primary-btn">Register</button>
+        <button onclick="goToLogin()" class="primary-btn">Get Started</button>
+    </div>
+</section>
+
+<section id="about" class="section glass fade-in">
+    <h2>About MediTrace</h2>
+    <p>
+        MediTrace is a blockchain-powered pharmaceutical supply chain system
+        ensuring transparency, authenticity, and security in medicine distribution
+        from manufacturer to pharmacy.The system helps prevent fake drugs by providing
+         secure and transparent tracking of medicines. It builds trust between 
+         manufacturers,distributors, pharmacies, and consumers.
+    </p>
+</section>
+
+<section id="features" class="section glass fade-in">
+    <h2>Key Features</h2>
+
+    <div class="vcards">
+        <div class="verified-card">
+            <h3>🔐 Blockchain Security</h3>
+            <p>Immutable tracking of medicines across supply chain stages.</p>
+        </div>
+
+        <div class="verified-card">
+            <h3>📦 QR Code Tracking</h3>
+            <p>Scan medicines instantly to verify authenticity.</p>
+        </div>
+
+        <div class="verified-card">
+            <h3>👥 Role-Based Access</h3>
+            <p>Dedicated dashboards for each supply chain participant.</p>
+        </div>
+
+        <div class="verified-card">
+    <h3>📦 Verified Info</h3>
+    <p>Medicine name & strength</p>
+    <p>Manufacturer details</p>
+    <p>Expiry date check</p>
+</div>
+    </div>
+</section>
+
+<section class="section glass">
+    <h2>Empowering the Pharmaceutical Supply Chain</h2>
+
+    <div class="role-cards">
+
+        <div class="role-card">
+            <h3>🏭 For Manufacturer</h3>
+            <p>
+                Manufacturers can register medicines on the blockchain, 
+                generate QR codes, and ensure product authenticity from the 
+                very beginning of the supply chain.
+            </p>
+        </div>
+
+        <div class="role-card">
+            <h3>🚚 For Distributors</h3>
+            <p>
+                Distributors can track received medicines, verify their 
+                origin, and securely transfer them to pharmacies while 
+                maintaining full transparency.
+            </p>
+        </div>
+
+        <div class="role-card">
+            <h3>💊 For Pharmacy</h3>
+            <p>
+                Pharmacies can verify medicines, scan QR codes, and ensure 
+                customers receive genuine and safe products with complete 
+                traceability.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 MediTrace | Blockchain Pharmaceutical Supply Chain
+</footer>
+
+<script>
+
+function goToLogin(){
+    window.location.href="login.html";
+}
+
+function goToRegister(){
+    window.location.href="register.html";
+}
+
+</script>
+
+<script src="js/script.js"></script>
+</body>
+</html>

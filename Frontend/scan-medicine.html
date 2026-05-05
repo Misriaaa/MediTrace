@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Medicine</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- QR Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <h2>Scan Medicine QR</h2>
+
+        <div id="reader" style="width:300px;"></div>
+
+        <br>
+
+        <div id="scanResult"></div>
+
+        <br>
+
+        <button class="login-btn" onclick="window.location.href='pharmacy.html'">
+            Back
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/scan.js"></script>
+
+</body>
+</html>
