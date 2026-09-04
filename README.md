@@ -164,6 +164,10 @@ MediTrace can be used in:
 
 ![Pharmacy Dashboard](images/pharmacy.png)
 
+## Customer Page
+
+![Customer Qr Scan Page](images/customer.jpeg)
+
 ## Medicine Registration
 
 ![Medicine Registration](images/addproduct.png)
@@ -186,7 +190,7 @@ MediTrace can be used in:
 
 ## Workflow
 
-![Workflow](images/systemworkflow.png)
+![Workflow](images/systemtworkflow.png)
 
 ## Developed By
 
