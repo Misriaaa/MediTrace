@@ -152,6 +152,11 @@ MediTrace can be used in:
 
 ![Admin Dashboard](images/admindash.png)
 
+## Shipped Medicines
+
+![Shipped Medicines](images/shipped.png)
+
+
 ## Manufacturer Dashboard
 
 ![Manufacturer Dashboard](images/manufacturer.png)
