@@ -173,17 +173,6 @@ MediTrace can be used in:
 
 ![Customer Qr Scan Page](images/customer.jpeg)
 
-## Medicine Registration
-
-![Medicine Registration](images/addproduct.png)
-
-## Medicine Registration
-
-![Medicine Registration](images/addproduct.png)
-
-## Add Medicine
-
-![Add Medicine](images/addproduct.png)
 
 ## QR Code Verification
 
