@@ -181,6 +181,9 @@ MediTrace can be used in:
 
 ![Medicine Registration](images/addproduct.png)
 
+## Add Medicine
+
+![Add Medicine](images/addproduct.png)
 
 ## QR Code Verification
 
