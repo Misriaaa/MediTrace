@@ -150,43 +150,43 @@ MediTrace can be used in:
 
 ## Admin Dashboard
 
-![Admin Dashboard](images/admin_dashboard.png)
+![Admin Dashboard](images/admindash.png)
 
 ## Manufacturer Dashboard
 
-![Manufacturer Dashboard](images/manufacturer_dashboard.png)
+![Manufacturer Dashboard](images/manufacturer.png)
 
 ## Distributor Dashboard
 
-![Distributor Dashboard](images/distributor_dashboard.png)
+![Distributor Dashboard](images/distributor.png)
 
 ## Pharmacy Dashboard
 
-![Pharmacy Dashboard](images/pharmacy_dashboard.png)
+![Pharmacy Dashboard](images/pharmacy.png)
 
 ## Medicine Registration
 
-![Medicine Registration](images/add_medicine.png)
+![Medicine Registration](images/addproduct.png)
 
 ## QR Code Verification
 
-![QR Verification](images/qr_verification.png)
+![QR Verification](images/qrcode.png)
 
 ## Medicine Verification Result
 
-![Verification Result](images/verification.png)
+![Verification Result](images/verify.png)
 
 ## Supply Chain Tracking
 
-![Supply Chain Tracking](images/supply_chain.png)
+![Supply Chain Tracking](images/medtrack2.png)
 
 ## System Architecture
 
-![System Architecture](images/system_architecture.png)
+![System Architecture](images/systemart.png)
 
 ## Workflow
 
-![Workflow](images/workflow.png)
+![Workflow](images/systemworkflow.png)
 
 ## Developed By
 
